@@ -10,8 +10,9 @@ from easyIO import get_user_menu_selection
 def main():
     opening_message()
     book_log = load_book_log("test.txt")
-    option = display_main_menu()
-    menu_action(option, book_log)
+    while True:
+        option = display_main_menu()
+        menu_action(option, book_log)
 
 
 def opening_message():
@@ -40,7 +41,7 @@ def display_main_menu():
 
 def menu_action(option, book_log):
     if option == 0:
-        add_book()
+        add_book(book_log)
     elif option == 1:
         remove_book()
     elif option == 2:
@@ -50,14 +51,18 @@ def menu_action(option, book_log):
     else:
         sys.exit(1)
 
-def add_book():
-    pass
-
-
+def add_book(book_log):
+    title = input("Title?")
+    author = input("Author?")
+    language = input("Language?")
+    score = input("Rating from 1 to 10?")
+    date = input("When did you finish reading this book? [DD, MM, YYYY]")
+    #Finish
+    book_entry = {"title":title, "author":author, "language":language, "score":score, "date":date}
+    book_log.append(book_entry)
 
 def remove_book():
     pass
-
 
 def view_books(book_log):
     for book_number, book in enumerate(book_log):
@@ -77,7 +82,7 @@ def save_and_exit(book_log):
     file.close()
     sys.exit(0)
 
-
+#In the future, add a modify option
 
 
 
