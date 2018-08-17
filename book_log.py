@@ -1,6 +1,11 @@
 # coding=utf-8
 """
 This file logs books (title, author, date book was finished) and saves them to an external file
+
+Needs doing: 
+- Formalise add book function
+- Implement dates into easy IO
+- Make it work with real book file
 """
 
 import sys
@@ -86,10 +91,6 @@ def save_and_exit(book_log):
         file.write("#end\n")
     file.close()
     sys.exit(0)
-
-#In the future, add a modify option
-
-
 
 
 
