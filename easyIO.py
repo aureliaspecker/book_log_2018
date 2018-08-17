@@ -1,3 +1,4 @@
+from __future__ import print_function
 import sys
 
 # *** USER I/O ***
@@ -9,20 +10,25 @@ def get_user_input(**kwargs):
     message=kwargs.get("message","")
     dtype=kwargs.get("dtype",str)
     dtype=dtype.__name__
+    limits=kwargs.get("limits",None)
 
     # Get input, repeat message if incorrect data type
     if dtype=="int": # integer data type
         while True:
             try:
                 user_input=int(input(message))
-                break
+                if limits is None: break
+                else:
+                    if user_input>=limits[0] and user_input<=limits[1]: break
             except:
                 pass
     elif dtype=="float": # float data type
         while True:
             try:
                 user_input=float(input(message))
-                break
+                if limits is None: break
+                else:
+                    if user_input>=limits[0] and user_input<=limits[1]: break
             except:
                 pass
     elif dtype=="str": # string data type
@@ -58,13 +64,13 @@ def get_user_menu_selection(title,menu):
     print(title)
     for i, option in enumerate(menu):
         print("{:})  {:}".format(i+1,option))
-    user_selection=get_user_input(dtype=int)-1
+    user_selection=get_user_input(dtype=int,limits=(1,len(menu)))-1
 
     return user_selection
 
 
 if __name__=="__main__":
-    a=get_user_input(dtype=float)
-    print(a)
-    # menu=["a","b","c"]
-    # print get_user_menu_selection("Select option",menu)
+    # a=get_user_input(dtype=float)
+    # print(a)
+    menu=["a","b","c"]
+    print(get_user_menu_selection("Select option",menu))
