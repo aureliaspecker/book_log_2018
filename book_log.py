@@ -46,16 +46,17 @@ def menu_action(option, book_log):
     elif option == 2:
         view_books(book_log)
     elif option == 3:
-        exit()
+        save_and_exit(book_log)
     else:
         sys.exit(1)
 
-# def add_book():
-#
-#
-#
-# def remove_book():
-#
+def add_book():
+    pass
+
+
+
+def remove_book():
+    pass
 
 
 def view_books(book_log):
@@ -64,11 +65,17 @@ def view_books(book_log):
         for key, value in book.items():
             print("{}: {} \n".format(key, value))
 
-# def exit():
-#
-#
-#
-#
+
+def save_and_exit(book_log):
+    """save books to external file in custom format and close program"""
+    file=open("test.txt","w")
+    for book in book_log:
+        file.write("#start\n")
+        for k,v in book.items():
+            file.write("{0}:{1}\n".format(k,v))
+        file.write("#end\n")
+    file.close()
+    sys.exit(0)
 
 
 
