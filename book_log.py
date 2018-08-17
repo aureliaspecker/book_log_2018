@@ -42,7 +42,7 @@ def menu_action(option, book_log):
     if option == 0:
         add_book()
     elif option == 1:
-        remove_book()
+        book_log=remove_book(book_log)
     elif option == 2:
         view_books(book_log)
     elif option == 3:
@@ -55,16 +55,18 @@ def add_book():
 
 
 
-def remove_book():
-    pass
-
+def remove_book(book_log):
+    """ask user for title of book and remove from record"""
+    book_titles=[book.get("title",None) for book in book_log]
+    del_book=get_user_menu_selection("Select book to remove",book_titles)
+    book_log.pop(del_book)
+    return book_log
 
 def view_books(book_log):
     for book_number, book in enumerate(book_log):
         print("{})".format(book_number))
         for key, value in book.items():
             print("{}: {} \n".format(key, value))
-
 
 def save_and_exit(book_log):
     """save books to external file in custom format and close program"""

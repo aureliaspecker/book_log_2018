@@ -35,7 +35,9 @@ def get_user_input(**kwargs):
         while True:
             try:
                 user_input=str(input(message))
-                break
+                if limits is None: break
+                else:
+                    if user_input in limits: break
             except:
                 pass
     elif dtype=="bool": # boolean data type
@@ -70,7 +72,7 @@ def get_user_menu_selection(title,menu):
 
 
 if __name__=="__main__":
-    # a=get_user_input(dtype=float)
-    # print(a)
-    menu=["a","b","c"]
-    print(get_user_menu_selection("Select option",menu))
+    a=get_user_input(dtype=str,limits=["a","b"])
+    print(a)
+    # menu=["a","b","c"]
+    # print(get_user_menu_selection("Select option",menu))
