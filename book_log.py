@@ -11,7 +11,7 @@ def main():
     opening_message()
     book_log = load_book_log("test.txt")
     option = display_main_menu()
-    # menu_action(option)
+    menu_action(option, book_log)
 
 
 def opening_message():
@@ -30,40 +30,41 @@ def load_book_log(x):
             all_books.append(book)
         else:
             book[values[0]] = values[1].rstrip()
-    print(all_books)
     file.close()
-    return
+    return all_books
 
 def display_main_menu():
     menu = ["Add Book", "Remove Book", "View Books", "Exit"]
     option = get_user_menu_selection("Please select one of the following options", menu)
     return option
 
-# def menu_action(x):
-#     if x == 0:
-#         add_book()
-#     elif x == 1:
-#         remove_book()
-#     elif x == 2:
-#         view_books()
-#     elif x == 3:
-#         exit()
-#     else:
-#         sys.exit(1)
-#
-# def add_book():
-#
-#
-#
-# def remove_book():
-#
-#
-#
-# def view_books():
-#
-#
-#
-# def exit():
+def menu_action(option, book_log):
+    if option == 0:
+        add_book()
+    elif option == 1:
+        remove_book()
+    elif option == 2:
+        view_books(book_log)
+    elif option == 3:
+        exit()
+    else:
+        sys.exit(1)
+
+def add_book():
+
+
+
+def remove_book():
+
+
+
+def view_books(book_log):
+    
+
+
+
+
+def exit():
 
 
 
