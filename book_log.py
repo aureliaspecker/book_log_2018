@@ -50,25 +50,25 @@ def menu_action(option, book_log):
     else:
         sys.exit(1)
 
-def add_book():
-
-
-
-def remove_book():
-
+# def add_book():
+#
+#
+#
+# def remove_book():
+#
 
 
 def view_books(book_log):
-    
+    for book_number, book in enumerate(book_log):
+        print("{})".format(book_number))
+        for key, value in book.items():
+            print("{}: {} \n".format(key, value))
 
-
-
-
-def exit():
-
-
-
-
+# def exit():
+#
+#
+#
+#
 
 
 
